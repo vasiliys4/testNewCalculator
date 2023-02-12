@@ -11,7 +11,7 @@ namespace testNewCalculator
         string[]? TemporaryContainer { get; set; }
         string? ReadIsConsole { get; set; }
 
-        public string[] Read()
+        string[] Read()
         {
             MathematicalSymbols.Clear();
             ListString.Clear();
@@ -45,7 +45,7 @@ namespace testNewCalculator
             return TemporaryContainer;
         }
 
-        public void Validator()
+        void Validator()
         {
             int j = 0;
             int LengthArray = 1;
