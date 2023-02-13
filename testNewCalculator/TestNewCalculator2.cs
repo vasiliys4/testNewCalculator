@@ -15,6 +15,7 @@ namespace testNewCalculator
         {
             MathematicalSymbols.Clear();
             ListString.Clear();
+            NumbersFromTheExample.Clear();
             Console.WriteLine("Введите пример:");
             ReadIsConsole = Console.ReadLine();
 
@@ -110,6 +111,9 @@ namespace testNewCalculator
             }
             Console.Clear();
             Console.WriteLine($"{ReadIsConsole} = {result}");
+            ListString.Clear();
+
+
         }
     }
 }
