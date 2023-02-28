@@ -19,7 +19,7 @@ namespace testNewCalculator
             Console.WriteLine("Введите пример:");
             ReadIsConsole = Console.ReadLine();
 
-            TemporaryContainer = ReadIsConsole.Split('+', '-','*','/');
+            TemporaryContainer = ReadIsConsole.Split('+', '-','*','/','^');
             foreach (string number in TemporaryContainer)
             {
                 ListString.Add(number);
@@ -34,11 +34,15 @@ namespace testNewCalculator
                 {
                     MathematicalSymbols.Add(item);
                 }
-                else if(item == '*')
+                else if (item == '*')
                 {
                     MathematicalSymbols.Add(item);
                 }
                 else if (item == '/')
+                {
+                    MathematicalSymbols.Add(item);
+                }
+                else if (item == '^')
                 {
                     MathematicalSymbols.Add(item);
                 }
@@ -75,8 +79,23 @@ namespace testNewCalculator
 
         public void WorkString()
         {
-            Validator();
-            double result = NumbersFromTheExample[0];
+            Validator();           
+            double result = 1;
+            for (int i = 0; i < MathematicalSymbols.Count; i++)
+            {
+                if (MathematicalSymbols[i] == '^') 
+                { 
+                    for (int j = 0; j < NumbersFromTheExample[i + 1]; j++)
+                    { 
+                        result = result * NumbersFromTheExample[i];                        
+                    }
+                    NumbersFromTheExample[i] = result;
+                    NumbersFromTheExample.RemoveAt(i + 1);
+                    MathematicalSymbols.RemoveAt(i);
+                    i -= 1;
+                }                
+            }
+            result = NumbersFromTheExample[0];
             for (int i = 0; i < MathematicalSymbols.Count; i++)
             {
                 if (MathematicalSymbols[i] == '*')
@@ -112,8 +131,6 @@ namespace testNewCalculator
             Console.Clear();
             Console.WriteLine($"{ReadIsConsole} = {result}");
             ListString.Clear();
-
-
         }
     }
 }
