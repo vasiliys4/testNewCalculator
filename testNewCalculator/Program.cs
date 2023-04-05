@@ -11,7 +11,7 @@ internal class Program
         var tmp = true;
         while (tmp)
         {
-            test.WorkString();
+            test.Calculation();
         }
     }
 }
